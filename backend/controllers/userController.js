@@ -41,6 +41,10 @@ const registerUser = asyncHandler(async(req,res) => {
     res.json({message:'regiser user'})
 })
 
+const tokengenerate = (id) => {
+    jwt.sign
+}
+
 const loginUser = asyncHandler(async(req,res) => {
     const {email , password} = req.body
     const user = await User.findOne({email})
