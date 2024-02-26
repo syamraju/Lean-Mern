@@ -63,12 +63,18 @@ const loginUser = asyncHandler(async(req,res) => {
         res.status(200)
         throw new Error('invalid')
     }
-    res.json({message: 'usr login'})
+    //res.json({message: 'usr login'})
 })
 
-const getme = (req,res) => {
-    res.json({message : 'user get'})
-}
+const getme = asyncHandler(async(req,res) => {
+    const {_id , name , email} = await User.findById(req.user.id)
+        res.status(200).json({
+            id : _id,
+            name,
+            email,
+        })
+    }
+)
 
 module.exports = {
     registerUser,
